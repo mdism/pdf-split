@@ -1,7 +1,7 @@
 {
   "name": "PDF Split",
   "icon": "Sp",
-  "desc": "Split a PDF into pages or ranges, and compress or sharpen the result. Works on scanned and digital PDFs.",
+  "desc": "Split a PDF into pages or ranges, and compress or enhance the result. Scanned or digital.",
   "status": "live",
-  "order": 100
+  "order": 22
 }
