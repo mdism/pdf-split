@@ -21,4 +21,4 @@ text = log.read_text(encoding="utf-8")
 if f"## {ver} " not in text:
     text = text.replace("# Changelog\n", f"# Changelog\n\n## {ver} — {datetime.date.today()}\n- {note}\n", 1)
     log.write_text(text, encoding="utf-8")
-print(f"Version set to {ver}. Commit, push, then Deploy HEAD in cPanel.")
+print(f"Version set to {ver}. Commit and push; GitHub Pages publishes it in about a minute.")

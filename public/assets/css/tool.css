@@ -116,8 +116,8 @@ main { flex: 1; padding: 28px 0 48px; }
 .drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 
 /* Form controls */
-label.f { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
-input[type=number], input[type=text], select {
+label.f, div.f { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
+input[type=number], input[type=text], input[type=date], input[type=time], input[type=password], select {
   width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
   border-radius: 8px; padding: 8px 10px; min-height: 38px;
 }
@@ -181,3 +181,46 @@ a.tool:hover { border-color: var(--green); transform: translateY(-2px); }
 .tool .meta { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--ink-soft); }
 .tool .go { color: var(--orange); font-weight: 700; }
 .tool.soon { border-style: dashed; }
+
+/* ============ BREADCRUMB ============ */
+.crumbs ol { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 12px; color: var(--ink-soft); }
+.crumbs li + li::before { content: '/'; margin: 0 8px; color: var(--line); }
+.crumbs a { color: var(--ink-soft); text-decoration: none; }
+.crumbs a:hover { color: var(--green); text-decoration: underline; }
+.crumbs [aria-current] { color: var(--ink); font-weight: 700; }
+
+/* ============ INPUT → PROCESS → OUTPUT ============ */
+.flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 8px; margin: 0 0 18px; max-width: 840px; padding: 0; list-style: none; }
+.flow li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13px; }
+.flow li.arrow { background: none; border: 0; padding: 0; display: grid; place-items: center; color: var(--orange); font-weight: 800; font-size: 18px; }
+.flow b { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
+@media (max-width: 640px) {
+  .flow { grid-template-columns: 1fr; gap: 4px; }
+  .flow li.arrow { transform: rotate(90deg); height: 18px; }
+}
+
+/* ============ FAQ ============ */
+.faq h2 { font-size: 16px; margin-bottom: 8px; }
+.faq details { border-top: 1px solid var(--line); padding: 10px 0; }
+.faq details:first-of-type { border-top: 0; }
+.faq summary { cursor: pointer; font-weight: 700; }
+.faq details p { margin: 6px 0 0; color: var(--ink-soft); max-width: 72ch; }
+
+/* ============ PAGE / IMAGE GRID (PDF to Image, Image to PDF) ============ */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; list-style: none; margin: 0; padding: 0; }
+.tile { position: relative; display: flex; flex-direction: column; gap: 6px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+.tile.dragging { opacity: .4; }
+.tile.drop-before { box-shadow: -4px 0 0 var(--orange); }
+.tile .pic { aspect-ratio: 3 / 4; display: grid; place-items: center; background: var(--bg-alt); border-radius: 6px; overflow: hidden; cursor: grab; }
+.tile .pic img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform .2s; }
+.tile .num { z-index: 1; position: absolute; top: 12px; left: 12px; background: var(--green); color: var(--bg); font-size: 11px; font-weight: 800; border-radius: 6px; padding: 1px 7px; }
+.tile .name { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tile .meta { font-size: 11px; color: var(--ink-soft); }
+.tile .tools { display: flex; gap: 4px; flex-wrap: wrap; }
+.tile .tools .btn { flex: 1 1 auto; justify-content: center; padding: 4px 6px; }
+.progress { height: 6px; border-radius: 3px; background: var(--bg-alt); overflow: hidden; }
+.progress > span { display: block; height: 100%; width: 0; background: var(--green); transition: width .2s; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 13px; }
+.big { font-size: 22px; font-weight: 800; line-height: 1.35; color: var(--green); margin: 0; }
+.stat .v { overflow-wrap: anywhere; }
+@media (max-width: 560px) { .stat .v { font-size: 17px; } }
